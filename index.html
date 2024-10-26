@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Descargas - Sistemas Operativos</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #3f3d56;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .content-wrapper {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 15px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            background-color: #e9ecef;
+        }
+        
+        .status-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .btn-download {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+        }
+        
+        .btn-download:hover {
+            background-color: #5651d8;
+        }
+        
+        .card-header {
+            background-color: transparent;
+            border-bottom: none;
+            padding-top: 1.5rem;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .file-size {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-left: 0.5rem;
+        }
+
+        .rounded-pill {
+            border-radius: 50rem !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--secondary-color);">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-hdd-rack-fill me-2"></i>
+                    Centro de Descargas SO
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="bi bi-house-door me-1"></i>Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://youtu.be/YrcfUIo6C1Y?si=Nl6zutx4lKaWSQzg"><i class="bi bi-info-circle me-1"></i>Acerca de</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="container text-center">
+                <h1 class="display-4 mb-3">Centro de Descargas</h1>
+                <p class="lead mb-4">Descarga las ISOs necesarias para la materia de Sistemas Operativos</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Buscar ISO...">
+                            <button class="btn btn-light" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container mb-5">
+            <!-- Filter Pills -->
+            <ul class="nav nav-pills mb-4 justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Todos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Windows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Linux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Utilidades</a>
+                </li>
+            </ul>
+
+            <!-- ISO Cards -->
+            <div class="row g-4">
+                <!-- Ubuntu -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-header text-center">
+                            <div class="icon-circle">
+                                <i class="bi bi-ubuntu fs-2"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ubuntu</h5>
+                            <p class="card-text">Sistema operativo Linux más popular para escritorio. Perfecto para principiantes en Linux.</p>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="bi bi-info-circle"></i> Versión: 24.04.1 LTS
+                                </small>
+                                <span class="file-size">5.78 GB</span>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-download text-white" onclick="showToast()">
+                                    <i class="bi bi-download me-2"></i>Descargar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent d-flex justify-content-between">
+                            <small class="badge bg-success rounded-pill">
+                                <i class="bi bi-check-circle"></i> Activo
+                            </small>
+                            <small class="badge bg-info rounded-pill">
+                                <i class="bi bi-shield-check"></i> Verificado
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Windows 10 -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-windows fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Windows 10</h5>
+            <p class="card-text">Sistema operativo más usado. Versión con todas las características.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: 21H2
+                </small>
+                <span class="file-size">4.59 GB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 90%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- Windows Server -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-windows fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Windows Server</h5>
+            <p class="card-text">Windows Server (WINBLUE) para entornos empresariales y educativos.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: ES-ES_DV9
+                </small>
+                <span class="file-size">4.48 GB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 85%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- Windows 7 -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-windows fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Windows 7</h5>
+            <p class="card-text">Versión clásica de Windows, ideal para equipos antiguos o compatibilidad legacy.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: SP1
+                </small>
+                <span class="file-size">4.35 GB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 60%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- Kali Linux -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-shield-lock fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Kali Linux</h5>
+            <p class="card-text">Distribución Linux especializada en pruebas de penetración y seguridad informática.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: 2022.1
+                </small>
+                <span class="file-size">3.80 GB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 75%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- HBCD PE -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-tools fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">HBCD PE</h5>
+            <p class="card-text">Suite de herramientas para diagnóstico y recuperación de sistemas Windows.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: x64
+                </small>
+                <span class="file-size">3.02 GB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 70%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- UltraISO -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-disc fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">UltraISO</h5>
+            <p class="card-text">Software para crear, modificar y convertir archivos de imagen ISO.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: 9.7.2.3561
+                </small>
+                <span class="file-size">4.05 MB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 80%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast-container">
+<div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="downloadToast">
+<div class="d-flex">
+<div class="toast-body">
+    <i class="bi bi-check-circle me-2"></i>
+    Descarga iniciada correctamente
+</div>
+<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+    <h5>Centro de Descargas - Sistemas Operativos</h5>
+    <p class="small">Para facilitar el acceso a los recursos de la materia.</p>
+</div>
+<div class="col-md-6 text-md-end">
+    <p class="small">© 2024 Chucharizard</p>
+    <div class="social-links">
+        <a href="https://github.com/Chucharizard" target="_blank" class="text-light me-3"><i class="bi bi-github"></i></a>
+        <a href="https://discord.gg/5qk4QKY2HE" target="_blank" class="text-light me-3"><i class="bi bi-discord"></i></a>
+        <a href="https://steamcommunity.com/id/Chucharizard/" target="_blank" class="text-light"><i class="bi bi-steam"></i></a>
+    </div>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom Scripts -->
+<script>
+    function showToast() {
+        const toast = new bootstrap.Toast(document.getElementById('downloadToast'));
+        toast.show();
+        
+        // Obtener el título del SO desde el botón clickeado
+        const card = event.target.closest('.card');
+        const title = card.querySelector('.card-title').textContent;
+        
+        // Enlaces de MediaFire (reemplaza estos enlaces con los tuyos reales)
+        const downloadLinks = {
+            'Ubuntu': 'https://www.mediafire.com/file/tl208aa4htv4go3/ubuntu-24.04.1-desktop-amd64.iso/file',
+            'Windows 10': 'https://www.mediafire.com/file/igpna8e2kxb0m1k/W10.iso/file',
+            'Windows Server': 'https://www.mediafire.com/file/z4use3vrcdlj4pp/WINBLUE_X64_SERVER_ES-ES_DV9.ISO/file',
+            'Windows 7': 'https://www.mediafire.com/file/xhwagez7bb4w7pw/W7-Completo.iso/file',
+            'Kali Linux': 'https://www.mediafire.com/file/2kovgoxqswnbuon/kali-linux-2022.1-virtualbox-amd64.ova/file',
+            'HBCD PE': 'https://www.mediafire.com/file/12pvzw6j4n9srdv/HBCD_PE_x64.iso/file',
+            'UltraISO': 'https://www.mediafire.com/file/2wbs1kw6tv78a5w/UltraISO.v9.7.2.3561.exe/file'
+        };
+        
+        // Redirigir después de mostrar el toast
+        setTimeout(() => {
+            if (downloadLinks[title]) {
+                window.open(downloadLinks[title], '_blank');
+            }
+        }, 1000);
+    }
+
+// Activar todos los tooltips
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+return new bootstrap.Tooltip(tooltipTriggerEl)
+});
+
+// Funcionalidad de búsqueda
+document.querySelector('input[type="text"]').addEventListener('keyup', function(e) {
+const searchTerm = e.target.value.toLowerCase();
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+const title = card.querySelector('.card-title').textContent.toLowerCase();
+const description = card.querySelector('.card-text').textContent.toLowerCase();
+
+if (title.includes(searchTerm) || description.includes(searchTerm)) {
+    card.closest('.col-md-6').style.display = '';
+} else {
+    card.closest('.col-md-6').style.display = 'none';
+}
+});
+});
+
+// Filtrado por categorías
+document.querySelectorAll('.nav-pills .nav-link').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+
+// Actualizar pills activos
+document.querySelectorAll('.nav-pills .nav-link').forEach(l => l.classList.remove('active'));
+this.classList.add('active');
+
+const category = this.textContent.toLowerCase();
+const cards = document.querySelectorAll('.card');
+
+if (category === 'todos') {
+    cards.forEach(card => card.closest('.col-md-6').style.display = '');
+    return;
+}
+
+cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    const isWindows = title.includes('windows') && category === 'windows';
+    const isLinux = (title.includes('ubuntu') || title.includes('kali')) && category === 'linux';
+    const isUtility = (title.includes('ultraiso') || title.includes('hbcd')) && category === 'utilidades';
+    
+    if (isWindows || isLinux || isUtility) {
+        card.closest('.col-md-6').style.display = '';
+    } else {
+        card.closest('.col-md-6').style.display = 'none';
+    }
+});
+});
+});
+</script>
+</body>
+</html>
