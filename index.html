@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Descargas - Sistemas Operativos</title>
+    <title>Centro de Descargas - SO y Redes</title>
     <link rel="stylesheet" href="style.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -119,7 +119,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <i class="bi bi-hdd-rack-fill me-2"></i>
-                    Centro de Descargas SO
+                    Centro de Descargas SO y Redes
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -141,7 +141,7 @@
         <div class="hero-section">
             <div class="container text-center">
                 <h1 class="display-4 mb-3">Centro de Descargas</h1>
-                <p class="lead mb-4">Descarga las ISOs necesarias para la materia de Sistemas Operativos</p>
+                <p class="lead mb-4">Descarga las ISOs y recursos necesarios para la materia de SO y Redes</p>
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="input-group mb-3">
@@ -170,6 +170,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Utilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Redes</a>
                 </li>
             </ul>
 
@@ -433,6 +436,79 @@
         </div>
     </div>
 </div>
+<!-- PuTTY -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-terminal fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">PuTTY</h5>
+            <p class="card-text">Cliente SSH y Telnet para conexiones remotas y administración de redes.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Versión: 0.83
+                </small>
+                <span class="file-size">3.35 MB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 90%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
+
+<!-- Cisco 3725 -->
+<div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+        <div class="card-header text-center">
+            <div class="icon-circle">
+                <i class="bi bi-router fs-2"></i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center">Cisco 3725</h5>
+            <p class="card-text">Imagen de router Cisco 3725 para simulación de redes en GNS3.</p>
+            <div class="mb-3">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i> Formato: ZIP
+                </small>
+                <span class="file-size">44.56 MB</span>
+            </div>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: 85%"></div>
+            </div>
+            <div class="d-grid">
+                <button class="btn btn-download text-white" onclick="showToast()">
+                    <i class="bi bi-download me-2"></i>Descargar
+                </button>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex justify-content-between">
+            <small class="badge bg-success rounded-pill">
+                <i class="bi bi-check-circle"></i> Activo
+            </small>
+            <small class="badge bg-info rounded-pill">
+                <i class="bi bi-shield-check"></i> Verificado
+            </small>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 </div>
@@ -455,7 +531,7 @@
 <div class="container">
 <div class="row">
 <div class="col-md-6">
-    <h5>Centro de Descargas - Sistemas Operativos</h5>
+    <h5>Centro de Descargas - SO y Redes</h5>
     <p class="small">Para facilitar el acceso a los recursos de la materia.</p>
 </div>
 <div class="col-md-6 text-md-end">
@@ -491,7 +567,9 @@
             'Windows 7': 'https://www.mediafire.com/file/xhwagez7bb4w7pw/W7-Completo.iso/file',
             'Kali Linux': 'https://www.mediafire.com/file/2kovgoxqswnbuon/kali-linux-2022.1-virtualbox-amd64.ova/file',
             'HBCD PE': 'https://www.mediafire.com/file/12pvzw6j4n9srdv/HBCD_PE_x64.iso/file',
-            'UltraISO': 'https://www.mediafire.com/file/2wbs1kw6tv78a5w/UltraISO.v9.7.2.3561.exe/file'
+            'UltraISO': 'https://www.mediafire.com/file/2wbs1kw6tv78a5w/UltraISO.v9.7.2.3561.exe/file',
+            'PuTTY': 'https://www.mediafire.com/file/c2c22i927br7pwp/putty-0.83-installer.msi/file',
+            'Cisco 3725': 'https://www.mediafire.com/file/laqibx1bxkxdc2h/Cisco_3725.zip/file'
         };
         
         // Redirigir después de mostrar el toast
@@ -547,8 +625,9 @@ cards.forEach(card => {
     const isWindows = title.includes('windows') && category === 'windows';
     const isLinux = (title.includes('ubuntu') || title.includes('kali')) && category === 'linux';
     const isUtility = (title.includes('ultraiso') || title.includes('hbcd')) && category === 'utilidades';
+    const isRedes = (title.includes('putty') || title.includes('cisco')) && category === 'redes';
     
-    if (isWindows || isLinux || isUtility) {
+    if (isWindows || isLinux || isUtility || isRedes) {
         card.closest('.col-md-6').style.display = '';
     } else {
         card.closest('.col-md-6').style.display = 'none';
